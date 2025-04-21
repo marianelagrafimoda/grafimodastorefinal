@@ -1,0 +1,3 @@
+# Vercel ignore file
+# Não ignorar nada para forçar construção completa
+# node_modules 

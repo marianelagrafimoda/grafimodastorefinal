@@ -1,0 +1,160 @@
+
+/* App.css - Custom styles */
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+}
+
+/* Elegant transitions */
+.page-transition {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(240, 240, 250, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 182, 226, 0.8);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(167, 139, 218, 0.9);
+}
+
+/* Smooth transitions */
+a, button {
+  transition: all 0.3s ease;
+}
+
+/* Glass effect for cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+}
+
+/* Dark footer */
+.footer-dark {
+  background-color: #222222;
+  color: #FFFFFF;
+}
+
+/* Icon animation */
+.icon-animate {
+  transition: transform 0.5s ease;
+}
+
+.icon-animate:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Color selection button animation */
+button.color-option {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button.color-option:hover {
+  transform: scale(1.15);
+}
+
+button.color-option.selected {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 2px white, 0 0 0 4px rgba(200, 182, 226, 0.8);
+}
+
+/* Loading indicators */
+.loading-dots span {
+  animation-name: loading;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+}
+
+.container-custom {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-custom {
+    max-width: 1280px;
+  }
+}
+
+/* Mobile-first design for admin panel */
+@media (max-width: 768px) {
+  .admin-panels {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .admin-panel {
+    margin-bottom: 1.5rem;
+  }
+}

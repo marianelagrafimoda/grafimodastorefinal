@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>estilo-personalizado</title>
+    <meta name="description" content="Lovable Generated Project" />
+    <meta name="author" content="Lovable" />
+    <meta property="og:image" content="/og-image.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Força recarregamento da página em caso de erro 404
+      window.addEventListener('error', function(e) {
+        if (e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK') {
+          // Se o erro for em um script ou link CSS, recarregar a página
+          if (sessionStorage.getItem('reloaded') !== 'true') {
+            sessionStorage.setItem('reloaded', 'true');
+            window.location.reload(true);
+          }
+        }
+      }, true);
+      
+      // Limpa a flag de recarregamento após um tempo
+      setTimeout(function() {
+        sessionStorage.removeItem('reloaded');
+      }, 5000);
+      
+      // Detecta problemas com o Router e carregamento de conteúdo
+      setTimeout(function() {
+        // Se estamos na página de admin mas não vemos o elemento
+        if (window.location.pathname === '/admin') {
+          const adminPanel = document.querySelector('[data-admin-panel]');
+          if (!adminPanel) {
+            console.log('Recarregando por não encontrar o painel admin');
+            window.location.reload(true);
+          }
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 280 30% 98%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 279 35% 80%;
+    --primary-foreground: 270 5.9% 15%;
+
+    --secondary: 280 10% 96.1%;
+    --secondary-foreground: 270 5.9% 15%;
+
+    --muted: 280 10% 96.1%;
+    --muted-foreground: 270 5% 40%;
+
+    --accent: 280 15% 94%;
+    --accent-foreground: 270 5.9% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 280 10% 90%;
+    --input: 280 10% 90%;
+    --ring: 280 35% 70%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-md;
+  }
+  
+  .btn-primary {
+    @apply bg-lilac hover:bg-lilac-dark text-white font-medium rounded-md px-4 py-2 transition-all duration-300 shadow-sm hover:shadow transform hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary/80 text-secondary-foreground font-medium rounded-md px-4 py-2 transition-all duration-300 shadow-sm hover:shadow;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .slide-animation {
+    animation: slide-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  
+  @keyframes slide-in {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    height: auto !important;
+    position: relative;
+  }
+  
+  body {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    overscroll-behavior-y: none;
+  }
+  
+  .container-custom {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100% !important;
+  }
+  
+  button, a {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  input, textarea, select, button {
+    font-size: 16px !important; /* Prevents zoom on focus in iOS */
+  }
+}
