@@ -136,38 +136,38 @@ const Navbar: React.FC = () => {
         
         {isMobileMenuOpen && (
           <div className="md:hidden fixed top-[70px] left-0 right-0 bg-white shadow-md z-50 transition-all duration-300 opacity-100 transform translate-y-0">
-            <div className="container-custom mx-auto py-4 flex flex-col space-y-4">
-              <Link to="/" onClick={toggleMobileMenu} className="text-foreground hover:text-lilac-dark py-2 transition-colors">
+            <div className="container-custom mx-auto py-2 flex flex-col space-y-1">
+              <Link to="/" onClick={toggleMobileMenu} className="text-foreground hover:text-lilac-dark py-1 transition-colors">
                 Inicio
               </Link>
               
-              <Link to="/quienes-somos" onClick={toggleMobileMenu} className="text-foreground hover:text-lilac-dark py-2 transition-colors flex items-center gap-2">
+              <Link to="/quienes-somos" onClick={toggleMobileMenu} className="text-foreground hover:text-lilac-dark py-1 transition-colors flex items-center gap-2">
                 Quiénes Somos
               </Link>
 
-              <div className="space-y-2 pl-4">
-                <div className="text-foreground py-2">Productos</div>
+              <div className="space-y-0.5 pl-4 pt-1">
+                <div className="text-foreground py-1">Productos</div>
                 <button 
                   onClick={() => handleCategoryClick('camisetas')} 
-                  className="block w-full text-left text-foreground hover:text-lilac-dark py-2 transition-colors pl-4"
+                  className="block w-full text-left text-foreground hover:text-lilac-dark py-1 transition-colors pl-4"
                 >
                   Camisetas
                 </button>
                 <button 
                   onClick={() => handleCategoryClick('sudaderas')} 
-                  className="block w-full text-left text-foreground hover:text-lilac-dark py-2 transition-colors pl-4"
+                  className="block w-full text-left text-foreground hover:text-lilac-dark py-1 transition-colors pl-4"
                 >
                   Sudaderas
                 </button>
                 <button 
                   onClick={() => handleCategoryClick('cojines')} 
-                  className="block w-full text-left text-foreground hover:text-lilac-dark py-2 transition-colors pl-4"
+                  className="block w-full text-left text-foreground hover:text-lilac-dark py-1 transition-colors pl-4"
                 >
                   Cojines
                 </button>
                 <button 
                   onClick={() => handleCategoryClick('productos')} 
-                  className="block w-full text-left text-foreground hover:text-lilac-dark py-2 transition-colors pl-4"
+                  className="block w-full text-left text-foreground hover:text-lilac-dark py-1 transition-colors pl-4"
                 >
                   Ver todo
                 </button>
@@ -178,23 +178,23 @@ const Navbar: React.FC = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 onClick={toggleMobileMenu}
-                className="text-foreground hover:text-lilac-dark py-2 transition-colors"
+                className="text-foreground hover:text-lilac-dark py-1 transition-colors"
               >
                 Personalización
               </a>
 
               {isAuthenticated && isAdmin ? (
-                <Link to="/admin" onClick={toggleMobileMenu} className="text-foreground hover:text-lilac-dark py-2 transition-colors">
+                <Link to="/admin" onClick={toggleMobileMenu} className="text-foreground hover:text-lilac-dark py-1 transition-colors">
                   Panel de Administración
                 </Link>
               ) : null}
               
               {isAuthenticated ? (
-                <button onClick={() => { logout(); toggleMobileMenu(); }} className="text-foreground hover:text-lilac-dark py-2 transition-colors text-left">
+                <button onClick={() => { logout(); toggleMobileMenu(); }} className="text-foreground hover:text-lilac-dark py-1 transition-colors text-left">
                   Cerrar Sesión
                 </button>
               ) : (
-                <Link to="/login" onClick={toggleMobileMenu} className="text-foreground hover:text-lilac-dark py-2 transition-colors">
+                <Link to="/login" onClick={toggleMobileMenu} className="text-foreground hover:text-lilac-dark py-1 transition-colors">
                   Iniciar Sesión
                 </Link>
               )}
