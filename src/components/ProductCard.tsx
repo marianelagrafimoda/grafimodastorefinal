@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ShoppingCart, Heart, Package, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/button';
@@ -29,8 +28,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   // Get available sizes
   const availableSizes = product.sizes?.filter(s => s.available) || [];
-  const adultSizes = availableSizes.filter(s => !s.isChildSize);
-  const kidSizes = availableSizes.filter(s => s.isChildSize);
+  const hasUniqueSize = availableSizes.some(size => size.isUniqueSize);
+  const uniqueSizes = availableSizes.filter(s => s.isUniqueSize);
+  
+  // Se tem tamanho único, só mostra ele, senão mostra os tamanhos adulto e criança
+  const adultSizes = !hasUniqueSize ? availableSizes.filter(s => !s.isChildSize && !s.isUniqueSize) : [];
+  const kidSizes = !hasUniqueSize ? availableSizes.filter(s => s.isChildSize && !s.isUniqueSize) : [];
 
   // Handle add to cart
   const handleAddToCart = () => {
@@ -178,6 +181,31 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         }`}
                       >
                         {size.name}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {uniqueSizes.length > 0 && (
+                <div>
+                  {hasUniqueSize ? (
+                    <h4 className="text-sm font-medium mb-2">Talla:</h4>
+                  ) : (
+                    <h4 className="text-sm font-medium mb-2">Talla Única:</h4>
+                  )}
+                  <div className="flex flex-wrap gap-2">
+                    {uniqueSizes.map((size) => (
+                      <button
+                        key={size.id}
+                        onClick={() => setSelectedSize(size.id)}
+                        className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                          selectedSize === size.id
+                            ? 'bg-lilac text-white'
+                            : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                        }`}
+                      >
+                        {hasUniqueSize ? 'Única' : size.name}
                       </button>
                     ))}
                   </div>

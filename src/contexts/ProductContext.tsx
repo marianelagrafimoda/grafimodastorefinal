@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { supabase } from '../integrations/supabase/client';
 import { uploadImage } from '../lib/supabase';
@@ -10,6 +9,7 @@ export interface Size {
   name: string;
   available: boolean;
   isChildSize?: boolean;
+  isUniqueSize?: boolean;
 }
 
 export interface Color {

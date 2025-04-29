@@ -312,6 +312,43 @@ const ProductEditor: React.FC<ProductEditorProps> = ({
               </Button>
             </div>
           </div>
+
+          <div className="mt-3">
+            <p className="text-xs text-gray-500 mb-1">Tallas Únicas:</p>
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="uniqueSizeCheckboxEdit"
+                className="mr-2 h-4 w-4 rounded border-gray-300 text-lilac focus:ring-lilac"
+                checked={editingProduct.sizes.some(size => size.isUniqueSize)}
+                onChange={() => {
+                  const hasUniqueSize = editingProduct.sizes.some(size => size.isUniqueSize);
+                  
+                  if (hasUniqueSize) {
+                    // Remove unique sizes
+                    const updatedSizes = editingProduct.sizes.filter(size => !size.isUniqueSize);
+                    setEditingProduct({...editingProduct, sizes: updatedSizes});
+                  } else {
+                    // Add unique size only and remove all other sizes
+                    setEditingProduct({
+                      ...editingProduct, 
+                      sizes: [
+                        { 
+                          id: 'talla-unica', 
+                          name: 'Talla Única', 
+                          available: true, 
+                          isUniqueSize: true 
+                        }
+                      ]
+                    });
+                  }
+                }}
+              />
+              <label htmlFor="uniqueSizeCheckboxEdit" className="text-sm text-gray-700">
+                Habilitar Talla Única (ocultará otras tallas)
+              </label>
+            </div>
+          </div>
         </div>
       </div>
       
